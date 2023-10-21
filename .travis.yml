@@ -1,0 +1,16 @@
+sudo: required
+
+language: generic
+
+service:
+  - docker
+
+befor_install:
+  -docker build -t skandi567/docker-react-app -f Dockerfile.dev
+
+script: 
+  - echo "test start.."
+  - docker run -e CI=true skandi567/docker-react-app num run test -- --coverage
+
+after-success:
+  - echo "test ok.."
