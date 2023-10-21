@@ -1,0 +1,17 @@
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "run", "start"]
+
+
+# 맥에서
+# -v $(pwd):/usr/src/app
+# 윈도우에서
+# -v %cd%:/usr/src/app
